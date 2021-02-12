@@ -1,6 +1,6 @@
 ndarray-opencv-converter
 ------------------------
-If you have a computer vision pipeline in C++ and you want to expose it to Python, this is your library.
+If you have a C++ computer vision pipeline that uses OpenCV and you want to expose it to Python, this is your library.
 
 Dependencies
 ------------
