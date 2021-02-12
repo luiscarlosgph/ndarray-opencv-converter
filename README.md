@@ -35,4 +35,4 @@ The code in this repo is based on [numpy-boost-python-opencv](https://github.com
 
 License
 -------
-This project is distributed under an MIT license.
+This project is distributed under an [MIT license](https://github.com/luiscarlosgph/ndarray-opencv-converter/blob/main/LICENSE).
