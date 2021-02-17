@@ -29,6 +29,90 @@ Dependencies
       $ ./b2 --with-python link=static cxxflags="-std=c++11 -fPIC" variant=release stage
       $ sudo ./b2 --with-python link=static cxxflags="-std=c++11 -fPIC" variant=release install
 
+Usage
+-----
+Let's assume you have a library called ```superlibrary```, with header ```superlibrary.h``` and implementation ```superlibrary.cpp``` (which should contain your Python wrapper). For example:
+
+**superlibrary.h**
+
+```cpp
+#ifndef SUPERLIBRARY_H
+#define SUPERLIBRARY_H
+
+#include <opencv2/imgproc/imgproc.hpp>
+
+// TODO: Define your classes/functions here
+
+// Exemplary function that we want to use from C++ but also expose to Python
+cv::Mat coolFunction(const cv::Mat &im);
+
+// Exemplary class that we want to use in C++ but also expose to Python
+class CoolClass {
+  public:
+    cv::Mat toGray(const cv::Mat &im);
+};
+
+#endif
+```
+
+**superlibrary.cpp**
+
+```cpp
+#include "ndcv.h" // NOTE: Header-only library that does the conversion magic, you need to keep it!
+#include "superlibrary.h"
+
+// TODO: Implement your library here
+
+// Exemplary function that we want to use from C++ but also expose to Python
+cv::Mat coolFunction(const cv::Mat &im) {
+  cv::Mat smoothIm;
+  cv::GaussianBlur(im, smoothIm, cv::Size(15, 15), 0, 0);
+  return smoothIm;
+}
+
+// Exemplary class that we want to use in C++ but also expose to Python
+cv::Mat CoolClass::toGray(const cv::Mat &im) {
+  cv::Mat greyIm;
+  cv::cvtColor(im, greyIm, cv::COLOR_BGR2GRAY);
+ return greyIm;
+}
+
+// NOTE: conversion magic, you need to keep it!
+static void *init_ar() {
+  Py_Initialize();
+  import_array();
+  return NULL;
+}
+
+// NOTE: you should change the name of the library from 'superlibrary' to something more
+//       appropriate, but, you must call the output library file with the same name.
+//       That is, in your CMakeLists.txt:
+//
+//       add_library(superlibrary SHARED superlibrary.cpp)
+//                        /\
+//                        || These two must be equal!
+//                        \/
+BOOST_PYTHON_MODULE(superlibrary) {
+  // NOTE: conversion magic, you need to keep it!
+  init_ar();
+  boost::python::to_python_converter<cv::Mat, matToNDArrayBoostConverter>();
+  matFromNDArrayBoostConverter();
+
+  // TODO: Expose your functions and classes to Python here
+  
+  // Example 1: this is how you expose a function
+  boost::python::def("cool_function", coolFunction);
+  
+  // Example 2: this is how you expose a class and its methods
+  boost::python::class_<CoolClass>("CoolClass", boost::python::init<>())
+    .def("to_gray", &CoolClass::toGray);
+}
+```
+
+In the example above, if ```ndcv.h``` is included, the conversion between a C++ ndarray (what Python passes) and cv::Mat (what your library expects) is performed transparently, and the code just works. If you do not include ```ndcv.h```, an error like this will show up at compilation time:
+
+TODO
+
 Credits
 -------
 The code in this repo is based on [numpy-boost-python-opencv](https://github.com/yati-sagade/blog-content/blob/master/content/numpy-boost-python-opencv.rst) and [pyboostcvconverter](https://github.com/Algomorph/pyboostcvconverter).
