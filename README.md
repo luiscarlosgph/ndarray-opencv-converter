@@ -123,7 +123,7 @@ did not match C++ signature:
     cool_function(cv::Mat)
 ```
 
-Exemplary programs in C++ and Python that use the same library (shown above) can be seen here: 
+Exemplary programs in C++ and Python that use **the same** .so library (superlibrary.so, whose code is shown above) here: 
 
 * [exemplary_program.cpp](https://github.com/luiscarlosgph/ndarray-opencv-converter/blob/main/exemplary_program.cpp)
 * [exemplary_program.py](https://github.com/luiscarlosgph/ndarray-opencv-converter/blob/main/exemplary_program.py)
