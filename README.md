@@ -110,7 +110,7 @@ BOOST_PYTHON_MODULE(superlibrary) {
 }
 ```
 
-In the example above, the conversion between an ndarray (what Python passes) and cv::Mat (what your library expects) is performed transparently, and the code just works. If you do not use this library, i.e. if you do not include ```ndcv.h``` and the converter code marked with a NOTE is commented out, an error will show up when you run your Python script (e.g. [exemplary_program.py](https://github.com/luiscarlosgph/ndarray-opencv-converter/blob/main/exemplary_program.py)) using the library :
+In the example above, the conversion between an ndarray (what Python passes) and cv::Mat (what your library expects) is performed transparently, and the code just works. If you do not use this library, i.e. if you do not include ```ndcv.h``` and the converter code marked with a NOTE is commented out, an error will show up when you try to use the library from Python, as in [exemplary_program.py](https://github.com/luiscarlosgph/ndarray-opencv-converter/blob/main/exemplary_program.py)):
 
 ```
 Traceback (most recent call last):
