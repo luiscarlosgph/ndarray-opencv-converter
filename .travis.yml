@@ -5,6 +5,12 @@ addons:
   apt:
     packages:
       - g++-9
+      - cmake
       - libopencv-dev 
       - python3-opencv
       - python3-pip
+script:
+  - mkdir -p build
+  - cd build
+  - cmake .. 
+  - make
