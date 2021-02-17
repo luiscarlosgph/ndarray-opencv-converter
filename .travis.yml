@@ -3,7 +3,6 @@ language: c++
 addons:
   apt:
     packages:
-      - g++-9
       - libopencv-dev 
       - python3-opencv
       - python3-pip
