@@ -26,6 +26,10 @@ script:
   - sudo make install
   - cd ..
   - build/exemplary_program
+  - ls blur.png
+  - ls gray.png
+  - rm blur.png
+  - rm gray.png
   - python3 exemplary_program.py
   - ls blur.png
   - ls gray.png
