@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/luiscarlosgph/ndarray-opencv-converter.png)](https://travis-ci.org/luiscarlosgph/ndarray-opencv-converter)
+[![Build Status](https://travis-ci.org/luiscarlosgph/ndarray-opencv-converter.svg?branch=main)](https://travis-ci.org/luiscarlosgph/ndarray-opencv-converter)
 
 ndarray-opencv-converter
 ------------------------
