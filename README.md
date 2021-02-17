@@ -137,7 +137,7 @@ $ mkdir build
 $ cd build
 $ cmake ..
 $ make
-$ make install
+$ sudo make install
 $ cd ..
 
 # To test the C++ program that uses the library (exemplary_program.cpp)
