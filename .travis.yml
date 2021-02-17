@@ -23,3 +23,9 @@ script:
   - cd build
   - cmake .. 
   - make
+  - sudo make install
+  - cd ..
+  - build/exemplary_program
+  - python3 exemplary_program.py
+  - ls blur.png
+  - ls gray.png
