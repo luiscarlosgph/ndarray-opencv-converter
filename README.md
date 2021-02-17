@@ -6,7 +6,7 @@ Dependencies
 ------------
 * Python >= 3.8.2
       
-* [OpenCV](https://github.com/opencv/opencv) >= 3.4.3 (last tested to be working 4.5.1). Skip this step if you have OpenCV already installed in your system. Otherwise, you can install it running:
+* [OpenCV](https://github.com/opencv/opencv) >= 4.0 (last tested to be working 4.5.1). Skip this step if you have OpenCV already installed in your system. Otherwise, you can install it running:
 
       
       # Ubuntu/Debian
