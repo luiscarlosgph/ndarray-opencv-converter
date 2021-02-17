@@ -82,9 +82,17 @@ BOOST_PYTHON_MODULE(superlibrary) {
 }
 ```
 
-In the example above, if ```ndcv.h``` is included, the conversion between a C++ ndarray (what Python passes) and cv::Mat (what your library expects) is performed transparently, and the code just works. If you do not include ```ndcv.h```, an error like this will show up at compilation time:
+In the example above, if ```ndcv.h``` is used, the conversion between a C++ ndarray (what Python passes) and cv::Mat (what your library expects) is performed transparently, and the code just works. If you do not include ```ndcv.h``` and the converter code marked with a NOTE is commented out, an error will show up when you run your Python script using the library (e.g. [exemplary_program.py](https://github.com/luiscarlosgph/ndarray-opencv-converter/blob/main/exemplary_program.py)):
 
-TODO
+```
+Traceback (most recent call last):
+  File "exemplary_program.py", line 8, in <module>
+    blur = superlibrary.cool_function(im)
+Boost.Python.ArgumentError: Python argument types in
+    superlibrary.cool_function(numpy.ndarray)
+did not match C++ signature:
+    cool_function(cv::Mat)
+```
 
 Dependencies
 ------------
