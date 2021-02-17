@@ -2,33 +2,6 @@ ndarray-opencv-converter
 ------------------------
 If you have a C++ computer vision pipeline that uses OpenCV and you want to expose it to Python, this is your library.
 
-Dependencies
-------------
-* Python >= 3.8.2
-      
-* [OpenCV](https://github.com/opencv/opencv) >= 3.4.3 (last tested to be working 4.5.1). Skip this step if you have OpenCV already installed in your system. Otherwise, you can install it running:
-
-      
-      # Ubuntu/Debian
-      $ sudo apt update
-      $ sudo apt install libopencv-dev python3-opencv
-      
-* [Numpy](https://pypi.org/project/numpy/) >= 1.20.0. Skip this step if you have Numpy already installed in your system. Otherwise, you can install it running:
-
-      # Ubuntu/Debian
-      $ sudo apt update
-      $ sudo apt install python3-pip
-      $ python3 -m pip install numpy --user
-
-* libboost_python >= 1.70.0 (last tested to be working 1.75.0)
-      
-      $ wget https://dl.bintray.com/boostorg/release/1.75.0/source/boost_1_75_0.tar.gz
-      $ tar xf boost_1_75_0.tar.gz
-      $ cd boost_1_75_0/
-      $ ./bootstrap.sh --with-python=/usr/bin/python3
-      $ ./b2 --with-python link=static cxxflags="-std=c++11 -fPIC" variant=release stage
-      $ sudo ./b2 --with-python link=static cxxflags="-std=c++11 -fPIC" variant=release install
-
 Usage
 -----
 Let's assume you have a library called ```superlibrary```, with header ```superlibrary.h``` and implementation ```superlibrary.cpp``` (which should contain your Python wrapper). For example:
@@ -112,6 +85,33 @@ BOOST_PYTHON_MODULE(superlibrary) {
 In the example above, if ```ndcv.h``` is included, the conversion between a C++ ndarray (what Python passes) and cv::Mat (what your library expects) is performed transparently, and the code just works. If you do not include ```ndcv.h```, an error like this will show up at compilation time:
 
 TODO
+
+Dependencies
+------------
+* Python >= 3.8.2
+      
+* [OpenCV](https://github.com/opencv/opencv) >= 3.4.3 (last tested to be working 4.5.1). Skip this step if you have OpenCV already installed in your system. Otherwise, you can install it running:
+
+      
+      # Ubuntu/Debian
+      $ sudo apt update
+      $ sudo apt install libopencv-dev python3-opencv
+      
+* [Numpy](https://pypi.org/project/numpy/) >= 1.20.0. Skip this step if you have Numpy already installed in your system. Otherwise, you can install it running:
+
+      # Ubuntu/Debian
+      $ sudo apt update
+      $ sudo apt install python3-pip
+      $ python3 -m pip install numpy --user
+
+* libboost_python >= 1.70.0 (last tested to be working 1.75.0)
+      
+      $ wget https://dl.bintray.com/boostorg/release/1.75.0/source/boost_1_75_0.tar.gz
+      $ tar xf boost_1_75_0.tar.gz
+      $ cd boost_1_75_0/
+      $ ./bootstrap.sh --with-python=/usr/bin/python3
+      $ ./b2 --with-python link=static cxxflags="-std=c++11 -fPIC" variant=release stage
+      $ sudo ./b2 --with-python link=static cxxflags="-std=c++11 -fPIC" variant=release install
 
 Credits
 -------
