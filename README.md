@@ -110,8 +110,11 @@ BOOST_PYTHON_MODULE(superlibrary) {
 }
 ```
 
-In the example above, the conversion between an ndarray (what Python passes) and cv::Mat (what your library expects) is performed transparently, and the code just works. If you do not use this library, i.e. if you do not include ```ndcv.h``` and the converter code marked with a NOTE is commented out, an error will show up when you try to use the library from Python, e.g. running [exemplary_program.py](https://github.com/luiscarlosgph/ndarray-opencv-converter/blob/main/exemplary_program.py) leads to:
-
+In the example above, the conversion between an ndarray (what Python passes) and cv::Mat (what your library expects) is performed transparently, and the code just works.
+<!--
+If you do not use this library, i.e. if you do not include ```ndcv.h``` and the converter code marked with a NOTE is commented out, an error will show up when you try to use the library from Python, e.g. running [exemplary_program.py](https://github.com/luiscarlosgph/ndarray-opencv-converter/blob/main/exemplary_program.py) leads to:
+-->
+<!--
 ```
 Traceback (most recent call last):
   File "exemplary_program.py", line 8, in <module>
@@ -121,6 +124,7 @@ Boost.Python.ArgumentError: Python argument types in
 did not match C++ signature:
     cool_function(cv::Mat)
 ```
+-->
 
 Exemplary programs in C++ and Python that use **the same** .so library (superlibrary.so, whose code is shown above) here: 
 
