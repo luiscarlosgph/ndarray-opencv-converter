@@ -44,9 +44,9 @@ add_library(${library_name} SHARED superlibrary.cpp)
 set_target_properties(${library_name} PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries(${library_name} ${Python3_LIBRARIES} ${Boost_LIBRARIES} ${OpenCV_LIBS})
 
-# Compile exemplary_program
-#add_executable(exemplary_program exemplary_program.cpp)
-#target_link_libraries(exemplary_program ${library_name})
+# Compile exemplary_program (C++ example binary that uses 'superlibrary')
+add_executable(exemplary_program exemplary_program.cpp)
+target_link_libraries(exemplary_program ${library_name})
 
 
 ####################
