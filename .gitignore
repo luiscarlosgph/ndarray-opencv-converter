@@ -32,3 +32,5 @@
 *.app
 
 build/
+gray.png
+blur.png

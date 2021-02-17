@@ -12,14 +12,14 @@ project(ndcv_example)
 #####################
 
 # Python libraries
-find_package(Python3 COMPONENTS Interpreter Development NumPy)
+find_package(Python3 REQUIRED COMPONENTS Interpreter Development NumPy)
 
 # OpenCV
 find_package(OpenCV REQUIRED)
 
 # libboost_pythonXX.a
 set(Boost_USE_STATIC_LIBS ON)
-find_package(Boost COMPONENTS python3 REQUIRED)
+find_package(Boost REQUIRED COMPONENTS python3)
 
 
 ################################
@@ -40,13 +40,13 @@ include_directories(
 
 # Compile libsuperlibrary.so
 set(library_name "superlibrary")
-add_library(${library_name} SHARED superlibrary.h)
+add_library(${library_name} SHARED superlibrary.cpp)
 set_target_properties(${library_name} PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries(${library_name} ${Python3_LIBRARIES} ${Boost_LIBRARIES} ${OpenCV_LIBS})
 
 # Compile exemplary_program
-add_executable(exemplary_program exemplary_program.cpp)
-target_link_libraries(exemplary_program ${library_name})
+#add_executable(exemplary_program exemplary_program.cpp)
+#target_link_libraries(exemplary_program ${library_name})
 
 
 ####################
