@@ -123,6 +123,11 @@ did not match C++ signature:
     cool_function(cv::Mat)
 ```
 
+Exemplary programs in C++ and Python that use the same library (shown above) can be seen here: 
+
+* [exemplary_program.cpp](https://github.com/luiscarlosgph/ndarray-opencv-converter/blob/main/exemplary_program.cpp)
+* [exemplary_program.py](https://github.com/luiscarlosgph/ndarray-opencv-converter/blob/main/exemplary_program.py)
+
 How to test this repo
 ---------------------
 
@@ -135,6 +140,11 @@ $ cmake ..
 $ make
 $ make install
 $ cd ..
+
+# To test the C++ program that uses the library (exemplary_program.cpp)
+$ build/exemplary_program
+
+# To test the Python script that uses the library (exemplary_program.py)
 $ python3 exemplary_program.py
 ```
 
