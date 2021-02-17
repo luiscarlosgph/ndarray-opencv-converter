@@ -125,6 +125,27 @@ did not match C++ signature:
 Exemplary programs in C++ and Python that use **the same** .so library (superlibrary.so, whose code is shown above) here: 
 
 * [exemplary_program.cpp](https://github.com/luiscarlosgph/ndarray-opencv-converter/blob/main/exemplary_program.cpp)
+```cpp
+#include <opencv2/imgcodecs.hpp>
+#include "superlibrary.h"
+
+int main(int argc, char **argv) {
+  // Read demo image
+  cv::Mat im = cv::imread("demo_image.png"); 
+  
+  // Use C++ coolFunction()
+  cv::Mat blur = coolFunction(im);
+  
+  // Use C++ CoolClass::toGray()
+  CoolClass cc;
+  cv::Mat gray = cc.toGray(im);
+  
+  // Write output images
+  cv::imwrite("blur.png", blur);
+  cv::imwrite("gray.png", gray);
+}
+```
+
 * [exemplary_program.py](https://github.com/luiscarlosgph/ndarray-opencv-converter/blob/main/exemplary_program.py)
 ```python
 import cv2
