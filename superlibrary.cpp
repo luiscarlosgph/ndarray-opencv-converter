@@ -34,7 +34,7 @@ static void *init_ar() {
 //       appropriate, but, you must call the output library file with the same name.
 //       That is, in your CMakeLists.txt:
 //
-//       add_library(superlibrary SHARED superlibrary.h)
+//       add_library(superlibrary SHARED superlibrary.cpp)
 //                        /\
 //                        || These two must be equal!
 //                        \/
